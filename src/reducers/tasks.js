@@ -1,11 +1,15 @@
 import * as Types from './../constants/ActionTypes';
 
 let initialState = [];
+// {
+//     id: 1
+//     name: "abc"
+// }
 
 let findIndex = (products, id) => {
     var result = -1;
     products.forEach((product, index) => {
-        if(product.id === id){
+        if (product.id === id) {
             result = index;
         }
     });
