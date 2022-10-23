@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
-import products from './products';
-import editingProduct from './editingProduct';
+import tasks from './tasks';
 
 const myReducer = combineReducers({
-    products,
-    editingProduct
+    tasks
 });
 
 export default myReducer;
