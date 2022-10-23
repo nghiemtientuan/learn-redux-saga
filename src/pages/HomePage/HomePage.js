@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import * as Types from '../../constants/ActionTypes';
+import {fetchTasksRequest} from '../../actions';
 
 const HomePage = (props) => {
 	const tasks = useSelector((state) => state.tasks);
 	const dispatch = useDispatch();
 
 	const [selectedTask, setSelectedTask] = useState(null);
+	
+	useEffect(() => {
+		fetchTasksRequest();
+	}, []);
 
 	const handleAddTask = () => {
 		const newTask = {
