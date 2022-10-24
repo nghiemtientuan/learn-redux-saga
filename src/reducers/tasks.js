@@ -7,7 +7,7 @@ let initialState = [];
 // }
 
 let findIndex = (products, id) => {
-    var result = -1;
+    let result = -1;
     products.forEach((product, index) => {
         if (product.id === id) {
             result = index;
@@ -24,15 +24,8 @@ let myReducer = (state = initialState, action) => {
             state.push(action.product);
 
             return [...state];
-        case Types.UPDATE_TASK:
-            index = findIndex(state, action.product.id);
-            if(index !== -1){
-                state[index] = action.product;
-            }
-
-            return [...state];
-        case Types.FETCH_TASKS:
-            state = action.products;
+        case Types.FETCH_TASKS_SUCCESS:
+            state = action.tasks;
 
             return [...state];
         case Types.DELETE_TASK:
@@ -40,7 +33,7 @@ let myReducer = (state = initialState, action) => {
             if(index !== -1){
                 state.splice(index, 1);
             }
-            
+
             return [...state];
         default:
             return [...state];

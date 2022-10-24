@@ -11,7 +11,7 @@ const HomePage = (props) => {
 	const [selectedTask, setSelectedTask] = useState(null);
 	
 	useEffect(() => {
-		fetchTasksRequest();
+		dispatch(fetchTasksRequest());
 	}, []);
 
 	const handleAddTask = () => {

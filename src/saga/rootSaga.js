@@ -12,7 +12,7 @@ export default function* rootSaga() {
                 yield call(saga);
                 break;
             } catch (e) {
-                console.log('saga error:', e);
+                console.error('[ERROR] Saga error:', e);
             }
         }
     })));
