@@ -1,3 +1,8 @@
-# my-webpack
+# Command
+```
+npm install
+npm run serve
+```
 
-# use webpack for reactjs-api project
+# Document
+Config Redux devtool: [click](https://medium.com/@samueldinesh/setting-up-redux-devtools-a-simple-guide-3b386a6254fa)

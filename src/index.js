@@ -9,9 +9,12 @@ import 'jquery';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import rootSaga from './saga/rootSaga';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const sagaMiddleware = createSagaMiddleware();
-const store = createStore(myReducer, applyMiddleware(sagaMiddleware));
+const store = createStore(myReducer, composeWithDevTools(
+  applyMiddleware(sagaMiddleware)
+));
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
