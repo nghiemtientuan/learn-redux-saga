@@ -20,15 +20,15 @@ let findIndex = (products, id) => {
 let myReducer = (state = initialState, action) => {
     let index = -1;
     switch (action.type){
-        case Types.ADD_TASK:
-            state.push(action.product);
+        case Types.ADD_TASK_SUCCESS:
+            state.push(action.task);
 
             return [...state];
         case Types.FETCH_TASKS_SUCCESS:
             state = action.tasks;
 
             return [...state];
-        case Types.DELETE_TASK:
+        case Types.DELETE_TASK_SUCCESS:
             index = findIndex(state, action.id);
             if(index !== -1){
                 state.splice(index, 1);

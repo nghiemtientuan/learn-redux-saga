@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import {addTaskRequest, fetchTasksRequest, deleteTaskRequest} from '../../actions';
 
-import * as Types from '../../constants/ActionTypes';
-import {fetchTasksRequest} from '../../actions';
-
-const HomePage = (props) => {
+const HomePage = (_props) => {
 	const tasks = useSelector((state) => state.tasks);
 	const dispatch = useDispatch();
 
@@ -20,19 +18,13 @@ const HomePage = (props) => {
 			id: Date.now()
 		};
 
-		dispatch({
-			type: Types.ADD_TASK,
-			product: newTask
-		});
+		dispatch(addTaskRequest(newTask));
 
 		setSelectedTask(null);
 	};
 
 	const handleRemoveTask = (taskId) => {
-		dispatch({
-			type: Types.DELETE_TASK,
-			id: taskId
-		});
+		dispatch(deleteTaskRequest(taskId));
 	};
 
 	const handleChange = (e) => {
@@ -44,26 +36,26 @@ const HomePage = (props) => {
 	};
 
 	return (
-		<div className="container">
-			<div id="myDIV" className="header">
+		<div className='container'>
+			<div id='myDIV' className='header'>
 				<h2>My To Do List</h2>
 				<input
-					type="text"
-					name="name"
-					id="myInput"
-					placeholder="Title..."
+					type='text'
+					name='name'
+					id='myInput'
+					placeholder='Title...'
 					onChange={handleChange}
 					value={selectedTask ? selectedTask.name : ''}
 				/>
-				<span className="addBtn" onClick={handleAddTask}>Add</span>
+				<span className='addBtn' onClick={handleAddTask}>Add</span>
 			</div>
 		
-			<ul id="myUL">
+			<ul id='myUL'>
 				{
 					tasks && tasks.map(task => (
 						<li key={task.id}>
 							{task.name}
-							<span className="close" onClick={() => handleRemoveTask(task.id)}>×</span>
+							<span className='close' onClick={() => handleRemoveTask(task.id)}>×</span>
 						</li>
 					))
 				}
